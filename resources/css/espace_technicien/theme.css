@@ -1,0 +1,45 @@
+:root {
+    --background-color: #f8fafc;
+    --grand_titre_color: #166534;
+    --text-color: #1a2e05;
+    --primary-color: #10b981;
+    --primary-hover-color: #059669;
+    --input-border-color: #d1fae5;
+    --accent-color: #34d399;
+    --accent-hover-color: #10b981;
+    --error-color: #ef4444;
+    --sidebar-color: #166534;
+    --sidebar-hover: #065f46;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --danger-color: #ef4444;
+}
+.glass-card {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(6, 95, 70, 0.1);
+    border-radius: 1rem;
+}
+.step-card {
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--primary-color);
+}
+.step-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(6, 95, 70, 0.15);
+}
+.sidebar {
+    transition: all 0.3s;
+}
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    .main-content {
+        margin-left: 0;
+    }
+}

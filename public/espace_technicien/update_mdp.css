@@ -1,0 +1,11 @@
+.password-strength {
+    height: 4px;
+    transition: all 0.3s;
+  }
+  .show-password-toggle {
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .show-password-toggle:hover {
+    transform: scale(1.1);
+  }

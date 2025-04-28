@@ -18,10 +18,11 @@
         <!-- Sidebar -->
         @include('espace_technicien.NavBar.navbar_tech')
 
-        
+
         <!-- Main Content -->
         <main class="main-content flex-1 p-6 overflow-y-auto">
             <header class="mb-8">
+                @include('espace_technicien.Update_mdp.succes_msg')
                 <h2 class="text-2xl font-bold text-[var(--grand_titre_color)] flex items-center">
                     <i class="fas fa-industry mr-2"></i>Processus de Production
                 </h2>
@@ -31,7 +32,7 @@
             <!-- Étapes de production -->
             <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Étape 1 -->
-                <a href="#" class="step-card glass-card p-6 cursor-pointer">
+                <a href="{{route('refonte_brute_view')}}" class="step-card glass-card p-6 cursor-pointer">
                     <div class="flex items-center mb-4">
                         <div class="w-10 h-10 rounded-full bg-[var(--primary-color)] text-white flex items-center justify-center mr-4">
                             <span class="font-bold">1</span>
@@ -42,7 +43,7 @@
                 </a>
 
                 <!-- Étape 2 -->
-                <a href="#" class="step-card glass-card p-6 cursor-pointer">
+                <a href="{{route('chaulage_view')}}" class="step-card glass-card p-6 cursor-pointer">
                     <div class="flex items-center mb-4">
                         <div class="w-10 h-10 rounded-full bg-[var(--primary-color)] text-white flex items-center justify-center mr-4">
                             <span class="font-bold">2</span>
@@ -53,7 +54,7 @@
                 </a>
 
                 <!-- Étape 3 -->
-                <a href="#" class="step-card glass-card p-6 cursor-pointer">
+                <a href="{{route('premier_carbo_view')}}" class="step-card glass-card p-6 cursor-pointer">
                     <div class="flex items-center mb-4">
                         <div class="w-10 h-10 rounded-full bg-[var(--primary-color)] text-white flex items-center justify-center mr-4">
                             <span class="font-bold">3</span>
@@ -64,7 +65,7 @@
                 </a>
 
                 <!-- Étape 4 -->
-                <a href="#" class="step-card glass-card p-6 cursor-pointer">
+                <a href="{{route('deu_carbo_view')}}" class="step-card glass-card p-6 cursor-pointer">
                     <div class="flex items-center mb-4">
                         <div class="w-10 h-10 rounded-full bg-[var(--primary-color)] text-white flex items-center justify-center mr-4">
                             <span class="font-bold">4</span>
@@ -75,7 +76,7 @@
                 </a>
 
                 <!-- Étape 5 -->
-                <a href="#" class="step-card glass-card p-6 cursor-pointer">
+                <a href="{{route('Refonte_epuree_view')}}" class="step-card glass-card p-6 cursor-pointer">
                     <div class="flex items-center mb-4">
                         <div class="w-10 h-10 rounded-full bg-[var(--primary-color)] text-white flex items-center justify-center mr-4">
                             <span class="font-bold">5</span>
@@ -86,7 +87,7 @@
                 </a>
 
                 <!-- Étape 6 -->
-                <a href="#" class="step-card glass-card p-6 cursor-pointer">
+                <a href="{{route('Refonte_decoloree_view')}}" class="step-card glass-card p-6 cursor-pointer">
                     <div class="flex items-center mb-4">
                         <div class="w-10 h-10 rounded-full bg-[var(--primary-color)] text-white flex items-center justify-center mr-4">
                             <span class="font-bold">6</span>
@@ -97,7 +98,7 @@
                 </a>
 
                 <!-- Étape 7 -->
-                <a href="#" class="step-card glass-card p-6 cursor-pointer">
+                <a href="{{route('evapuration_view')}}" class="step-card glass-card p-6 cursor-pointer">
                     <div class="flex items-center mb-4">
                         <div class="w-10 h-10 rounded-full bg-[var(--primary-color)] text-white flex items-center justify-center mr-4">
                             <span class="font-bold">7</span>
@@ -108,7 +109,7 @@
                 </a>
 
                 <!-- Étape 8 -->
-                <a href="#" class="step-card glass-card p-6 cursor-pointer">
+                <a href="{{route('cristalisation_view')}}" class="step-card glass-card p-6 cursor-pointer">
                     <div class="flex items-center mb-4">
                         <div class="w-10 h-10 rounded-full bg-[var(--primary-color)] text-white flex items-center justify-center mr-4">
                             <span class="font-bold">8</span>

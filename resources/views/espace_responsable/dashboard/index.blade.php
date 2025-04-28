@@ -94,10 +94,33 @@
                             <p class="text-lg font-mono">{{ $responsable->Matricule_resp }}</p>
                         </div>
                         <div class="border-l-4 border-[var(--primary-color)] pl-4">
+                            <h3 class="font-medium text-gray-500">CIN</h3>
+                            <p class="text-lg">{{ $responsable->CIN_resp ?? 'Non renseigné' }}</p>
+                        </div>
+
+                        <div class="border-l-4 border-[var(--primary-color)] pl-4">
+                            <h3 class="font-medium text-gray-500">Nom</h3>
+                            <p class="text-lg font-mono">{{ $responsable->Nom_resp }}</p>
+                        </div>
+                        <div class="border-l-4 border-[var(--primary-color)] pl-4">
+                            <h3 class="font-medium text-gray-500">Prénom</h3>
+                            <p class="text-lg">{{ $responsable->Prenom_resp ?? 'Non renseigné' }}</p>
+                        </div>
+
+                        <div class="border-l-4 border-[var(--primary-color)] pl-4">
                             <h3 class="font-medium text-gray-500">Email</h3>
                             <p class="text-lg">{{ $responsable->Email_resp ?? 'Non renseigné' }}</p>
                         </div>
+
                     </div>
+                    <a href="#" class="w-full p-4 border border-[var(--input-border-color)] rounded-xl hover:bg-blue-50 hover:border-blue-50 transition-colors text-left block">
+                                <div class="flex items-center space-x-3">
+                                    <div class="p-3 rounded-lg bg-blue-100 text-[var(--primary-color)]">
+                                        <i class="fas fa-key text-xl"></i>
+                                    </div>
+                                    <span>Modifier mot de passe</span>
+                                </div>
+                            </a>
 
                     <div class="mt-8">
                         <form action="{{ route('responsable.logout') }}" method="POST">

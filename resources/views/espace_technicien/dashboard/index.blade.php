@@ -37,7 +37,6 @@
     </style>
 </head>
 <body class="min-h-screen flex">
-    <!-- Sidebar -->
      <!-- Sidebar -->
      @include('espace_technicien.NavBar.navbar_tech')
 
@@ -45,7 +44,8 @@
     <main class="flex-1 overflow-y-auto">
         <div class="container mx-auto px-4 py-8">
             <div class="glass-card p-8">
-                <h1 class="text-2xl font-bold text-[var(--grand_titre_color)] mb-6">Tableau de Bord Technicien</h1>
+                @include('espace_technicien.update_mdp.succes_msg')
+                <h1 class="text-2xl font-bold text-[var(--grand_titre_color)] mb-6">Profie Technicien</h1>
 
                 <div class="space-y-4">
                     <div class="flex items-center space-x-4">
@@ -64,15 +64,41 @@
                             <p class="text-lg font-mono">{{ $technicien->Matricule_tech }}</p>
                         </div>
                         <div class="border-l-4 border-[var(--primary-color)] pl-4">
+                            <h3 class="font-medium text-gray-500">CIN</h3>
+                            <p class="text-lg">{{ $technicien->CIN_tech ?? 'Non renseigné' }}</p>
+                        </div>
+
+                        <div class="border-l-4 border-[var(--primary-color)] pl-4">
+                            <h3 class="font-medium text-gray-500">Nom</h3>
+                            <p class="text-lg font-mono">{{ $technicien->Nom_tech }}</p>
+                        </div>
+                        <div class="border-l-4 border-[var(--primary-color)] pl-4">
+                            <h3 class="font-medium text-gray-500">Prénom</h3>
+                            <p class="text-lg">{{ $technicien->Prenom_tech ?? 'Non renseigné' }}</p>
+                        </div>
+
+                        <div class="border-l-4 border-[var(--primary-color)] pl-4">
                             <h3 class="font-medium text-gray-500">Email</h3>
                             <p class="text-lg">{{ $technicien->Email_tech ?? 'Non renseigné' }}</p>
                         </div>
+
                     </div>
+                        <!--Pour modifier le mot de passe-->
 
+                            <a href="{{ route('update_mdp_view') }}" class="w-full p-4 border border-[var(--input-border-color)] rounded-xl hover:bg-blue-50 hover:border-blue-50 transition-colors text-left block">
+                                <div class="flex items-center space-x-3">
+                                    <div class="p-3 rounded-lg bg-blue-100 text-[var(--primary-color)]">
+                                        <i class="fas fa-key text-xl"></i>
+                                    </div>
+                                    <span>Modifier mot de passe</span>
+                                </div>
+                            </a>
 
+                        <!--pour Déconnexion-->
+                    <div class="mt-8">
                         <form action="{{ route('technicien.logout') }}" method="POST">
                             @csrf
-                            <button type="submit" class="w-full p-4 border border-[var(--input-border-color)] rounded-xl hover:bg-red-50 transition-colors text-left">
+                            <button type="submit" class="w-full p-4 border border-[var(--input-border-color)] rounded-xl hover:bg-red-50 hover:border-red-50 transition-colors text-left">
                                 <div class="flex items-center space-x-3">
                                     <div class="p-3 rounded-lg bg-red-100 text-red-500">
                                         <i class="fas fa-sign-out-alt text-xl"></i>

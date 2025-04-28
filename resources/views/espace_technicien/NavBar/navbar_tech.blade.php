@@ -39,6 +39,15 @@
                         <span>Processus Production</span>
                     </a>
                 </li>
+
+                <li>
+                    <a href="{{ route('liste_etape_view') }}"
+                       class="flex items-center p-3 rounded-xl {{ Request::routeIs('liste_etape_view*') ? 'bg-green-100' : '' }} text-[var(--text-color)] hover:bg-green-200 transition-colors">
+                        <i class="fas fa-history mr-3 text-[var(--primary-color)]"></i>
+                        <span>Historique d'analyse</span>
+                    </a>
+                </li>
+
                 <li class="mt-8">
                     <form action="{{ route('technicien.logout') }}" method="POST">
                         @csrf

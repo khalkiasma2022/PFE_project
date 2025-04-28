@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 
 // Responsable routes use
@@ -13,8 +12,15 @@ use App\Http\Controllers\espace_responsable\authentification\AuthResponsableCont
 use App\Http\Controllers\espace_responsable\dashboard\ResponsableDashboardController;
 use App\Http\Controllers\espace_technicien\dashboard\TechnicienDashboardController;
 use App\Http\Controllers\espace_responsable\ListeUtilisateurController ;
-
+use App\Http\Controllers\espace_responsable\Update_mdp\UpdateMdpController;
 use App\Http\Controllers\ProduitController;
+
+
+
+
+
+
+
 
 
 
@@ -22,11 +28,27 @@ use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\espace_technicien\authentification\AuthTechnicienController; //controller pour l'authentification des techniciens
 use App\Http\Controllers\espace_technicien\consulter_liste_produit\ConsulterListeProduitTechController; //controller pour consulter la liste des produits tech
 use App\Http\Controllers\espace_technicien\gestion_analyse\ListeEtapeController; //controller pour afficher la liste des étapes d'analyse
+use App\Http\Controllers\espace_technicien\Update_mdp\UpdateMdpController as UpdateMdpTech; //controller pour changer le mot de passe des techniciens
+use App\Http\Controllers\espace_technicien\gestion_analyse\RefonteBruteController; //controller pour la refonte brute
+use App\Http\Controllers\espace_technicien\gestion_analyse\ChaulageController; //controller pour la refonte brute
+use App\Http\Controllers\espace_technicien\gestion_analyse\RefonteEpureeController; //controller pour la refonte épurée
+use App\Http\Controllers\espace_technicien\gestion_analyse\RefonteDecoloreeController; //controller pour la refonte décolorée
+use App\Http\Controllers\espace_technicien\gestion_analyse\EvapurationController; //controller pour l'évapuration
+use App\Http\Controllers\espace_technicien\gestion_analyse\PremierCarboController; //controller pour la première carbonisation
+use App\Http\Controllers\espace_technicien\gestion_analyse\DeuxiemeCarboController; //controller pour la deuxième carbonisation
+use App\Http\Controllers\espace_technicien\gestion_analyse\CristalisationController; //controller pour le chaulage
+
+
+
+
+
+
+
+
+
 
 
 Route::get('/', function () {return view('welcome');})->name('first_page'); // Page d'accueil hethy awel page tjyk
-
-
 // Routes pour l'espace responsable
 Route::prefix('espace-responsable')->group(function () {
     // Page de connexion
@@ -48,7 +70,6 @@ Route::prefix('espace-responsable')->middleware(['auth:responsable'])->group(fun
     Route::get('/dashboard', [ResponsableDashboardController::class, 'index'])
          ->name('responsable.dashboard');
 });
-
 
 // Routes pour l'espace technicien
 Route::prefix('espace-technicien')->group(function () {
@@ -72,6 +93,13 @@ Route::prefix('espace-technicien')->middleware(['auth:technicien'])->group(funct
     Route::get('/dashboard', [TechnicienDashboardController::class, 'index'])
          ->name('technicien.dashboard');
 });
+
+
+
+
+
+
+
 
 
 
@@ -105,6 +133,10 @@ Route::post('/espace_responsable/modifier_compte/modifier_compte_technicien', [U
 /*Affichage de page gestion utilisateurs*/
 Route::get('/espace_responsable/gestion_utilisateurs', [ListeUtilisateurController::class, 'ViewPage'])->name('gestion_utilisateurs_view');
 
+
+
+
+
 // Pour les techniciens
 Route::resource('techniciens', 'TechnicienController');
 // Pour les responsables
@@ -124,15 +156,38 @@ Route::resource('responsables', 'ResponsableController');
 Route::get('/authentification_technicien', [AuthTechnicienController::class, 'ViewPage'])->name('auth_tech_view');
 Route::get('/authentification_responsable', [AuthResponsableController::class, 'ViewPage'])->name('auth_resp_view');
 
+/*Route pour changer le mot de passe*/
+Route::get('/espace_technicien/modifier_mdp', [UpdateMdpTech::class, 'ViewPage'])->name('update_mdp_view');
+Route::post('/espace_technicien/modifier_mdp', [UpdateMdpTech::class, 'updatePassword'])->name('update_mdp_action');
+
 /*Route pour liste des produits*/
 Route::get('/espace_technicien/liste_produit', [ConsulterListeProduitTechController::class, 'liste_produit_tech'])->name('liste_produit_tech_view');
 Route::get('/espace_technicien/liste_produit/{produit}', [ConsulterListeProduitTechController::class, 'show'])->name('produit_show_tech');
 
 /*Route pour gestion d'analyse*/
 Route::get('/espace_technicien/liste_etape', [ListeEtapeController::class, 'ViewPage'])->name('liste_etape_view');
+Route::get('/espace_technicien/liste_etape/Refonte_Brute', [RefonteBruteController::class, 'ViewPage'])->name('refonte_brute_view');
+Route::post('/espace_technicien/liste_etape/Refonte_Brute', [RefonteBruteController::class, 'AjouteRefonteBrute'])->name('refonte_brute_ajouter');
 
+Route::get('/espace_technicien/liste_etape/Chaulage', [ChaulageController::class, 'ViewPage'])->name('chaulage_view');
+Route::post('/espace_technicien/liste_etape/Chaulage', [ChaulageController::class, 'AjouteChaulage'])->name('chaulage_ajouter');
 
+Route::get('/espace_technicien/liste_etape/Premier_carbonitation', [PremierCarboController::class, 'ViewPage'])->name('premier_carbo_view');
+Route::post('/espace_technicien/liste_etape/Premier_carbonitation', [PremierCarboController::class, 'enregistrerAnalyse'])->name('premier_carbo_ajouter');
 
+Route::get('/espace_technicien/liste_etape/Deuxieme_carbonitation', [DeuxiemeCarboController::class, 'ViewPage'])->name('deu_carbo_view');
+Route::post('/espace_technicien/liste_etape/Deuxieme_carbonitation', [DeuxiemeCarboController::class, 'enregistrerAnalyse'])->name('deu_carbo_ajouter');
+
+Route::get('/espace_technicien/liste_etape/Refonte_epuree', [RefonteEpureeController::class, 'ViewPage'])->name('Refonte_epuree_view');
+Route::post('/espace_technicien/liste_etape/Refonte_epuree', [RefonteEpureeController::class, 'AjouteAnalyse'])->name('refonte_epuree_ajouter');
+
+Route::get('/espace_technicien/liste_etape/Refonte_decoloree', [RefonteDecoloreeController::class, 'ViewPage'])->name('Refonte_decoloree_view');
+Route::post('/espace_technicien/liste_etape/Refonte_decoloree', [RefonteDecoloreeController::class, 'AjouteAnalyse'])->name('refonte_decoloree_ajouter');
+
+Route::get('/espace_technicien/liste_etape/Evapuration', [EvapurationController::class, 'ViewPage'])->name('evapuration_view');
+Route::post('/espace_technicien/liste_etape/Evapuration', [EvapurationController::class, 'AjouteAnalyse'])->name('evapuration_ajouter');
+
+Route::get('/espace_technicien/liste_etape/Cristalisation', [CristalisationController::class, 'ViewPage'])->name('cristalisation_view');
 
 
 

@@ -80,7 +80,7 @@
     @include('espace_technicien.Update_mdp.error_msg')
 
     <!-- Formulaire -->
-    <form method="POST" action="{{ route('update_mdp_action') }}" class="p-6 space-y-6">
+    <form method="POST" action="{{ route('update_mdp_action_resp') }}" class="p-6 space-y-6">
       @csrf
 
       <!-- Nouveau mot de passe -->

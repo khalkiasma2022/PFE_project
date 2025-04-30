@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class DeuxiemeCarbo extends Model
 {
     protected $table = 'deuxieme_carbo'; // Nom de la table
-    protected $primaryKey = 'ID_deuxieme_carbo'; // Clé primaire
+    protected $primaryKey = 'ID_prelevement'; // Clé primaire
     public $timestamps = false; // Désactiver les timestamps automatiques
     protected $fillable = [
         'produit_utilise',

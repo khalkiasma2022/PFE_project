@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class RefonteBrutee extends Model
 {
     protected $table = 'refonte_brute'; // Nom de la table
-    protected $primaryKey = 'ID_refonte_brute'; // Clé primaire
+    protected $primaryKey = 'ID_prelevement'; // Clé primaire
     public $timestamps = false; // Désactiver les timestamps automatiques
     protected $fillable = [
         'produit_utilise',

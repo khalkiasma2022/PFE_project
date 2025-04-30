@@ -8,7 +8,7 @@ class Chaulage extends Model
 {
     //
     protected $table = 'chaulage'; // Nom de la table
-    protected $primaryKey = 'ID_chaulage'; // Clé primaire
+    protected $primaryKey = 'ID_prelevement'; // Clé primaire
     public $timestamps = false; // Désactiver les timestamps automatiques
     protected $fillable = [
         'produit_utilise',

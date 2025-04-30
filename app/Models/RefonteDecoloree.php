@@ -8,7 +8,7 @@ class RefonteDecoloree extends Model
 {
     //
     protected $table = 'refonte_decoloree'; // Nom de la table
-    protected $primaryKey = 'ID_refonte_decoloree'; // Clé primaire
+    protected $primaryKey = 'ID_prelevement'; // Clé primaire
     public $timestamps = false; // Désactiver les timestamps automatiques
     protected $fillable = [
         'produit_utilise',

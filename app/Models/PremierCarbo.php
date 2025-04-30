@@ -8,7 +8,7 @@ class PremierCarbo extends Model
 {
     //
     protected $table = 'premier_carbo'; // Nom de la table
-    protected $primaryKey = 'ID_premier_carbo'; // Clé primaire
+    protected $primaryKey = 'ID_prelevement'; // Clé primaire
     public $timestamps = false; // Désactiver les timestamps automatiques
     protected $fillable = [
         'produit_utilise',

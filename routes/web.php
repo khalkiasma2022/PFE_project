@@ -24,6 +24,7 @@ use App\Http\Controllers\ProduitController;
 
 
 
+
 //Technicien routes use
 use App\Http\Controllers\espace_technicien\authentification\AuthTechnicienController; //controller pour l'authentification des techniciens
 use App\Http\Controllers\espace_technicien\consulter_liste_produit\ConsulterListeProduitTechController; //controller pour consulter la liste des produits tech
@@ -37,6 +38,7 @@ use App\Http\Controllers\espace_technicien\gestion_analyse\EvapurationController
 use App\Http\Controllers\espace_technicien\gestion_analyse\PremierCarboController; //controller pour la première carbonisation
 use App\Http\Controllers\espace_technicien\gestion_analyse\DeuxiemeCarboController; //controller pour la deuxième carbonisation
 use App\Http\Controllers\espace_technicien\gestion_analyse\CristalisationController; //controller pour le chaulage
+use App\Http\Controllers\espace_technicien\historique_analyse\HistoriqueAnalyseTechController; //controller pour l'historique des analyses
 
 
 
@@ -130,6 +132,9 @@ Route::post('/espace_responsable/modifier_compte/modifier_compte_responsable', [
 Route::get('/espace_responsable/modifier_compte/modifier_compte_technicien', [UpdateAccountTechnicienController::class, 'ViewPage'])->name('updateTechnicien');
 Route::post('/espace_responsable/modifier_compte/modifier_compte_technicien', [UpdateAccountTechnicienController::class, 'UpdateTechnicien'])->name('updateTechnicien');
 
+/*Route pour changer le mot de passe*/
+Route::get('/espace_responsable/modifier_mdp', [UpdateMdpController::class, 'ViewPage'])->name('update_mdp_view_resp');
+Route::post('/espace_responsable/modifier_mdp', [UpdateMdpController::class, 'updatePassword'])->name('update_mdp_action_resp');
 /*Affichage de page gestion utilisateurs*/
 Route::get('/espace_responsable/gestion_utilisateurs', [ListeUtilisateurController::class, 'ViewPage'])->name('gestion_utilisateurs_view');
 
@@ -189,6 +194,10 @@ Route::post('/espace_technicien/liste_etape/Evapuration', [EvapurationController
 
 Route::get('/espace_technicien/liste_etape/Cristalisation', [CristalisationController::class, 'ViewPage'])->name('cristalisation_view');
 
+
+/*Route pour l'historique des analyses*/
+Route::get('/espace_technicien/historique_analyse', [HistoriqueAnalyseTechController::class, 'AfficherHistorique'])->name('historique_analyse_view');
+//Route::post('/espace_technicien/historique_analyse', [HistoriqueAnalyseTechController::class, 'AfficherHistorique'])->name('AfficherHistorique');
 
 
 

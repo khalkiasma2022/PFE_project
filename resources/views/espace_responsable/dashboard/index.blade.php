@@ -113,7 +113,7 @@
                         </div>
 
                     </div>
-                    <a href="#" class="w-full p-4 border border-[var(--input-border-color)] rounded-xl hover:bg-blue-50 hover:border-blue-50 transition-colors text-left block">
+                    <a href="{{route('update_mdp_view_resp')}}" class="w-full p-4 border border-[var(--input-border-color)] rounded-xl hover:bg-blue-50 hover:border-blue-50 transition-colors text-left block">
                                 <div class="flex items-center space-x-3">
                                     <div class="p-3 rounded-lg bg-blue-100 text-[var(--primary-color)]">
                                         <i class="fas fa-key text-xl"></i>

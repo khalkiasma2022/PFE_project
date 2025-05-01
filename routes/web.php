@@ -39,6 +39,7 @@ use App\Http\Controllers\espace_technicien\gestion_analyse\PremierCarboControlle
 use App\Http\Controllers\espace_technicien\gestion_analyse\DeuxiemeCarboController; //controller pour la deuxième carbonisation
 use App\Http\Controllers\espace_technicien\gestion_analyse\CristalisationController; //controller pour le chaulage
 use App\Http\Controllers\espace_technicien\historique_analyse\HistoriqueAnalyseTechController; //controller pour l'historique des analyses
+use App\Http\Controllers\espace_technicien\gestion_analyse\LotController; //controller pour la gestion des lots
 
 
 
@@ -169,34 +170,40 @@ Route::post('/espace_technicien/modifier_mdp', [UpdateMdpTech::class, 'updatePas
 Route::get('/espace_technicien/liste_produit', [ConsulterListeProduitTechController::class, 'liste_produit_tech'])->name('liste_produit_tech_view');
 Route::get('/espace_technicien/liste_produit/{produit}', [ConsulterListeProduitTechController::class, 'show'])->name('produit_show_tech');
 
+/*route pour gestion des lots*/
+Route::get('/espace_technicien/Processus_de_Production', [LotController::class, 'ViewPage'])->name('gestion_lot_view');
+Route::get('/espace_technicien/Processus_de_Production/Nouveau_lot/Refonte_Brute', [RefonteBruteController::class, 'ViewPageNewLotRefonte'])->name('refonte_brute_view_lot');
+Route::post('/espace_technicien/Processus_de_Production/Nouveau_lot/Refonte_Brute', [RefonteBruteController::class, 'AjouteRefonteBrute_lot'])->name('refonte_brute_ajouter_lot');
+
 /*Route pour gestion d'analyse*/
-Route::get('/espace_technicien/liste_etape', [ListeEtapeController::class, 'ViewPage'])->name('liste_etape_view');
-Route::get('/espace_technicien/liste_etape/Refonte_Brute', [RefonteBruteController::class, 'ViewPage'])->name('refonte_brute_view');
-Route::post('/espace_technicien/liste_etape/Refonte_Brute', [RefonteBruteController::class, 'AjouteRefonteBrute'])->name('refonte_brute_ajouter');
+Route::get('/espace_technicien/Processus_de_Production/liste_etape', [ListeEtapeController::class, 'ViewPage'])->name('liste_etape_view');
+Route::get('/espace_technicien/Processus_de_Production/liste_etape/Refonte_Brute', [RefonteBruteController::class, 'ViewPage'])->name('refonte_brute_view');
+Route::post('/espace_technicien/Processus_de_Production/liste_etape/Refonte_Brute', [RefonteBruteController::class, 'AjouteRefonteBrute'])->name('refonte_brute_ajouter');
 
-Route::get('/espace_technicien/liste_etape/Chaulage', [ChaulageController::class, 'ViewPage'])->name('chaulage_view');
-Route::post('/espace_technicien/liste_etape/Chaulage', [ChaulageController::class, 'AjouteChaulage'])->name('chaulage_ajouter');
+Route::get('/espace_technicien/Processus_de_Production/liste_etape/Chaulage', [ChaulageController::class, 'ViewPage'])->name('chaulage_view');
+Route::post('/espace_technicien/Processus_de_Production/liste_etape/Chaulage', [ChaulageController::class, 'AjouteChaulage'])->name('chaulage_ajouter');
 
-Route::get('/espace_technicien/liste_etape/Premier_carbonitation', [PremierCarboController::class, 'ViewPage'])->name('premier_carbo_view');
-Route::post('/espace_technicien/liste_etape/Premier_carbonitation', [PremierCarboController::class, 'enregistrerAnalyse'])->name('premier_carbo_ajouter');
+Route::get('/espace_technicien/Processus_de_Production/liste_etape/Premier_carbonitation', [PremierCarboController::class, 'ViewPage'])->name('premier_carbo_view');
+Route::post('/espace_technicien/Processus_de_Production/liste_etape/Premier_carbonitation', [PremierCarboController::class, 'enregistrerAnalyse'])->name('premier_carbo_ajouter');
 
-Route::get('/espace_technicien/liste_etape/Deuxieme_carbonitation', [DeuxiemeCarboController::class, 'ViewPage'])->name('deu_carbo_view');
-Route::post('/espace_technicien/liste_etape/Deuxieme_carbonitation', [DeuxiemeCarboController::class, 'enregistrerAnalyse'])->name('deu_carbo_ajouter');
+Route::get('/espace_technicien/Processus_de_Production/liste_etape/Deuxieme_carbonitation', [DeuxiemeCarboController::class, 'ViewPage'])->name('deu_carbo_view');
+Route::post('/espace_technicien/Processus_de_Production/liste_etape/Deuxieme_carbonitation', [DeuxiemeCarboController::class, 'enregistrerAnalyse'])->name('deu_carbo_ajouter');
 
-Route::get('/espace_technicien/liste_etape/Refonte_epuree', [RefonteEpureeController::class, 'ViewPage'])->name('Refonte_epuree_view');
-Route::post('/espace_technicien/liste_etape/Refonte_epuree', [RefonteEpureeController::class, 'AjouteAnalyse'])->name('refonte_epuree_ajouter');
+Route::get('/espace_technicien/Processus_de_Production/liste_etape/Refonte_epuree', [RefonteEpureeController::class, 'ViewPage'])->name('Refonte_epuree_view');
+Route::post('/espace_technicien/Processus_de_Production/liste_etape/Refonte_epuree', [RefonteEpureeController::class, 'AjouteAnalyse'])->name('refonte_epuree_ajouter');
 
-Route::get('/espace_technicien/liste_etape/Refonte_decoloree', [RefonteDecoloreeController::class, 'ViewPage'])->name('Refonte_decoloree_view');
-Route::post('/espace_technicien/liste_etape/Refonte_decoloree', [RefonteDecoloreeController::class, 'AjouteAnalyse'])->name('refonte_decoloree_ajouter');
+Route::get('/espace_technicien/Processus_de_Production/liste_etape/Refonte_decoloree', [RefonteDecoloreeController::class, 'ViewPage'])->name('Refonte_decoloree_view');
+Route::post('/espace_technicien/Processus_de_Production/liste_etape/Refonte_decoloree', [RefonteDecoloreeController::class, 'AjouteAnalyse'])->name('refonte_decoloree_ajouter');
 
-Route::get('/espace_technicien/liste_etape/Evapuration', [EvapurationController::class, 'ViewPage'])->name('evapuration_view');
-Route::post('/espace_technicien/liste_etape/Evapuration', [EvapurationController::class, 'AjouteAnalyse'])->name('evapuration_ajouter');
+Route::get('/espace_technicien/Processus_de_Production/liste_etape/Evapuration', [EvapurationController::class, 'ViewPage'])->name('evapuration_view');
+Route::post('/espace_technicien/Processus_de_Production/liste_etape/Evapuration', [EvapurationController::class, 'AjouteAnalyse'])->name('evapuration_ajouter');
 
-Route::get('/espace_technicien/liste_etape/Cristalisation', [CristalisationController::class, 'ViewPage'])->name('cristalisation_view');
+Route::get('/espace_technicien/Processus_de_Production/liste_etape/Cristalisation', [CristalisationController::class, 'ViewPage'])->name('cristalisation_view');
 
 
 /*Route pour l'historique des analyses*/
 Route::get('/espace_technicien/historique_analyse', [HistoriqueAnalyseTechController::class, 'AfficherHistorique'])->name('historique_analyse_view');
+Route::get('/espace_technicien/historique_analyse/detail_historique', [HistoriqueAnalyseTechController::class, 'DetailHistorique_ViewPage'])->name('detail_historique_view');
 //Route::post('/espace_technicien/historique_analyse', [HistoriqueAnalyseTechController::class, 'AfficherHistorique'])->name('AfficherHistorique');
 
 

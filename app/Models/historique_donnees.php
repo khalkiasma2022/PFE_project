@@ -18,9 +18,10 @@ class historique_donnees extends Model
     protected $fillable = [
         'matricule_technicien',
         'matricule_responsable',
-        'date_enregistrement',
+        'Date_historique',
         'ID_prelevement',
         'nom_etape',
+        'ID_lot',
 
     ];
 
@@ -43,7 +44,7 @@ class historique_donnees extends Model
         parent::boot();
 
         static::creating(function ($model) {
-            $model->date_enregistrement= now();
+            $model->Date_historique= now();
         });
     }
 

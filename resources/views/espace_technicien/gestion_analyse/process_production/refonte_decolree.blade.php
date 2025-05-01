@@ -28,6 +28,7 @@
             <div class="card-body">
                 <form action="{{ route('refonte_decoloree_ajouter') }}" method="POST">
                     @csrf
+                    <input type="hidden" name="id_lot" value="{{ $lot->ID_lot }}">
                     <!-- Degré Brix -->
                     <div class="form-group">
                         <label for="brix" class="form-label">

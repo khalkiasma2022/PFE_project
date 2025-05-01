@@ -18,12 +18,18 @@ class HistoriqueAnalyseTechController extends Controller
 
     //afficher la liste des analyses
     public function AfficherHistorique()
-{
-    // Récupérer tous les enregistrements de la table historique_donnees avec leurs relations (Technicien et Responsable)
-    $historiques = historique_donnees::with(['Technicien', 'Responsable'])->get();
+    {
+        // Récupérer les enregistrements de la table historique_donnees et filtrer par ID_lot
+        $historiques = historique_donnees::whereNotNull('ID_lot') // Filtrer uniquement les enregistrements avec un ID_lot
+            ->get();
 
-    // Retourner la vue avec les données historiques
-    return view('espace_technicien.historique_analyse.historique_analyse', compact('historiques'));
-}
+        // Retourner la vue avec les données historiques
+        return view('espace_technicien.historique_analyse.historique_analyse', compact('historiques'));
+    }
+
+    public function DetailHistorique_ViewPage(){
+        return view('espace_technicien.historique_analyse.detail_historique');
+
+    }
 
 }

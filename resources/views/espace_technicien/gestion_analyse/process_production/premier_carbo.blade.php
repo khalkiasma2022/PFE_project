@@ -31,6 +31,7 @@
             <div class="card-body">
                 <form action="{{ route('premier_carbo_ajouter') }}" method="POST">
                     @csrf
+                    <input type="hidden" name="id_lot" value="{{ $lot->ID_lot }}">
                     <!-- pH -->
                     <div class="form-group">
                         <label for="ph" class="form-label">

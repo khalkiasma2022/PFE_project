@@ -29,6 +29,7 @@
                 <form  action="{{ route('refonte_epuree_ajouter') }}" method="POST">
                     @csrf
                     <!-- Degré Brix -->
+                    <input type="hidden" name="id_lot" value="{{ $lot->ID_lot }}">
                     <div class="form-group">
                         <label for="brix" class="form-label">
                             <i class="ti ti-letter-b"></i>

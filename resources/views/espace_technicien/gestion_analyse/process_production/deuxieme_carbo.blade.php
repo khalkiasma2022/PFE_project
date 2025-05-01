@@ -32,6 +32,7 @@
                 <form action="{{ route('deu_carbo_ajouter') }}" method="POST">
                     @csrf
                     <!-- pH -->
+                    <input type="hidden" name="id_lot" value="{{ $lot->ID_lot }}">
                     <div class="form-group">
                         <label for="ph" class="form-label">
                             <i class="ti ti-letter-p btn-icon"></i>

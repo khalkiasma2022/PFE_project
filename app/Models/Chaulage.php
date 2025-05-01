@@ -21,6 +21,7 @@ class Chaulage extends Model
         'couleur',
         'lait_de_chaux',
         'CO2',
+        'ID_lot',
     ];
      // Automatically set the current date and time for 'Date_refonte_brutee'
      public static function boot()

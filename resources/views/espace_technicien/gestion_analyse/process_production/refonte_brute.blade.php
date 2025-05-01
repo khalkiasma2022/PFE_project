@@ -43,10 +43,12 @@
 
             <!-- Corps du formulaire -->
             <div class="p-4 md:p-6">
-                
+
                 <form action="{{route('refonte_brute_ajouter')}}" method="POST" class="space-y-6">
                     @csrf
+                    
                     <!-- Degré Brix -->
+                    <input type="hidden" name="id_lot" value="{{ $lot->ID_lot }}">
                     <div class="mb-6">
                         <label for="brix" class="block text-sm font-medium text-[#1a2e05] mb-2 flex items-center">
                             <i class="ti ti-letter-b mr-2"></i>Degré Brix

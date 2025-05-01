@@ -18,6 +18,7 @@ class Evaporation extends Model
         'temperature',
         'alcal',
         'couleur',
+        'ID_lot',
     ];
     // Automatically set the current date and time for 'Date_refonte_brutee'
     public static function boot()

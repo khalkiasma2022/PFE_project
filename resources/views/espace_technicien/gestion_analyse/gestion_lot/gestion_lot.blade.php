@@ -113,6 +113,7 @@
                     <thead>
                         <tr>
                             <th class="px-4 py-2 text-left text-gray-600">ID Lot</th>
+                            <th class="px-4 py-2 text-left text-gray-600">Matricule Technicien</th>
                             <th class="px-4 py-2 text-left text-gray-600">Date</th>
                             <th class="px-4 py-2 text-left text-gray-600">Statut</th>
                             <th class="px-4 py-2 text-left text-gray-600">Actions</th>
@@ -122,6 +123,8 @@
                         @foreach($lots as $lot)
                             <tr class="border-b hover:bg-gray-50">
                                 <td class="px-4 py-2">{{ $lot->ID_lot }}</td>
+                                
+                                <td class="px-4 py-2">{{ $lot->Matricule_technicien }}</td>
                                 <td class="px-4 py-2">{{ $lot->Date_lot }}</td>
                                 <td class="px-4 py-2">
                                     @if($lot->Statue == 'En cours')

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\espace_technicien\gestion_analyse;
 
-
+use App\Models\Responsable;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -60,6 +60,24 @@ class RefonteEpureeController extends Controller
             'Date_historique' => now(),
         ]);
 
+        // Récupération de la date du lot
+        $date_lot = Lot::find($id_lot)->Date_lot;
+
+         // Récupérer tous les responsables
+         $responsables = Responsable::all();
+
+         // Créer le contenu de la notification
+         $contenuNotification = "Nous vous informons que le technicien {$technicien->Nom_tech} {$technicien->Prenom_tech}, portant le matricule {$technicien->Matricule_tech}, a procédé à l'enregistrement d'une nouvelle analyse dans le cadre de l'étape intitulée '{$nom_etape}'. Cette analyse concerne un nouveau lot identifié par l'ID {$id_lot}, lequel a été créé en date du {$date_lot}.";
+
+         // Pour chaque responsable, on insère une notification
+         foreach ($responsables as $responsable) {
+             \DB::table('notificationgenerale')->insert([
+                 'contenu_notification' => $contenuNotification,
+                 'Matricule_technicien_notif' => $technicien->Matricule_tech,
+                 'Matricule_responsable_notif' => $responsable->Matricule_resp, // Matricule du responsable
+                 'created_at' => now(), // La date actuelle pour created_at
+             ]);
+         }
 
         return redirect()->route('gestion_lot_view')->with('success', "L’analyse de l'étape {$nom_etape} a été enregistrée avec succès pour le lot ID {$id_lot}. DATE : " . now()->format('Y-m-d H:i:s') . " . Matricule : " . $technicien->Matricule_tech);
     }

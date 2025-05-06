@@ -14,6 +14,7 @@ use App\Http\Controllers\espace_technicien\dashboard\TechnicienDashboardControll
 use App\Http\Controllers\espace_responsable\ListeUtilisateurController ;
 use App\Http\Controllers\espace_responsable\Update_mdp\UpdateMdpController;
 use App\Http\Controllers\ProduitController;
+use App\Http\Controllers\espace_responsable\gestion_notification\NotificationIsReadRespController;
 
 
 
@@ -220,6 +221,7 @@ Route::get('/produits/{produit}', [ProduitController::class, 'show'])->name('pro
 Route::get('/produits/{produit}/modifier', [ProduitController::class, 'edit'])->name('produits.edit');
 Route::put('/produits/{produit}', [ProduitController::class, 'update'])->name('produits.update');
 Route::delete('/produits/{produit}', [ProduitController::class, 'destroy'])->name('produits.destroy');
+
 
 
 

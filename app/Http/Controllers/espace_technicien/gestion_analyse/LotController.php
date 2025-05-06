@@ -5,6 +5,7 @@ namespace App\Http\Controllers\espace_technicien\gestion_analyse;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Lot; // Adjusted namespace to match the actual location of the Lot model
+use App\Models\Technicien; 
 
 class LotController extends Controller
 {
